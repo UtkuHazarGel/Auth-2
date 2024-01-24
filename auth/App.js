@@ -9,9 +9,15 @@ const Stack = createNativeStackNavigator();
 
 function NormalStack(){
   return(
-    <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+    <Stack.Navigator 
+    screenOptions={{headerStyle:{
+      
+      backgroundColor:"blueviolet",
+    },
+    headerTintColor:"white"
+    }}>
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerTitle:"Kullanıcı Giriş"}} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{headerTitle:"Kullanıcı Kayıt"}}/>
       </Stack.Navigator>
   )
 }
