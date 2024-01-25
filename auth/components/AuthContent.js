@@ -4,7 +4,7 @@ import AuthForm from "./AuthForm";
 import ButtonWhite from "./ButtonWhite";
 import { useNavigation } from "@react-navigation/native";
 
-export default function AuthContent({ isLogin }) {
+export default function AuthContent({ isLogin,onAuthenticate }) {
   const [credentialsIsValid, setCredentialsIsValid] = useState({
     email: false,
     confirmEmail: false,
@@ -19,7 +19,7 @@ export default function AuthContent({ isLogin }) {
     email = email.trim();
     password = password.trim();
     const emailIsValid = email.includes("@");
-    const passwordIsValid = password.lenght > 6;
+    const passwordIsValid = password.length > 6;
     const emailsAreEqual = email === confirmEmail;
     const passwordAreEqual = password === confirmPassword;
     if (
@@ -31,11 +31,13 @@ export default function AuthContent({ isLogin }) {
       setCredentialsIsValid({
         email: !emailIsValid,
         confirmEmail: !emailIsValid || !emailsAreEqual,
-        password: !passwordIsValid,
-        confirmPassword: !passwordIsValid || passwordAreEqual,
+        password: passwordIsValid,
+        confirmPassword: passwordIsValid || passwordAreEqual,
       });
       return;
     }
+
+    onAuthenticate({email,password})
   }
   const navigation = useNavigation();
   function switchScreen() {
