@@ -27,7 +27,7 @@ export default function AuthContent({ isLogin,onAuthenticate }) {
       !passwordIsValid ||
       (!isLogin && (!emailsAreEqual || !passwordAreEqual))
     ) {
-      Alert.alert("Girilen bilgileri kontrol ediniz!");
+      Alert.alert("Hatalı deneme!","Lütfen girilen bilgileri kontrol ediniz!");
       setCredentialsIsValid({
         email: !emailIsValid,
         confirmEmail: !emailIsValid || !emailsAreEqual,
